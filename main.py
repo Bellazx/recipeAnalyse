@@ -1,32 +1,31 @@
 # coding=utf-8
 
-import mysql.connector
-import pymysql
 import xlrd
 import numpy as np
 import pandas as pd
 import fetchCal
 
-
-conn = mysql.connector.connect(user = 'root',password = 'root',database = 'dzx' )
-
-cursor = conn.cursor()
-# cursor.execute('select * from yk_foodnutrition limit 1;')
-# value = cursor.fetchall()
-# print(value)
-
 fileName = 'recipe.xlsx'
 xlx = pd.read_excel(fileName,header=None)
 # df = xlx.parse('sheet1',dtype = 'object')
 # print(xlx.head())
-print(xlx.count(1).values)
+# print(xlx.count(1).values)
+
+for i in range(len(xlx.index.values)):
+    number = xlx.count(1)[i]
+    print('伙食' + str(i))
+    for j in range(0,number):
+        # print(xlx[j][i],' ',fetchCal.fetchCal(xlx[j][i]),fetchCal.fetchProtein(xlx[j][i]))
+        result = fetchCal.fetchMain(xlx[j][i])
+        if (result):
+            result.fetchOutPut()
+            print('---------------------------------------------------------------')
+    print('***************************************************************')
 
 
-number = xlx.count(1)[0]
-for i in range(0,number):
-    print(xlx[i][0],' ',fetchCal.fetchCal(xlx[i][0]))
-
-
+# cursor.execute('select * from yk_foodnutrition limit 1;')
+# value = cursor.fetchall()
+# print(value)
 # data = input().split(" ")
 #
 # def calCul(s):
