@@ -6,14 +6,14 @@ import pandas as pd
 import fetchCal
 
 fileName = 'recipe.xlsx'
-xlx = pd.read_excel(fileName,header=None)
+xlx = pd.read_excel(fileName,sheet_name='breakfast',header=None)
 # df = xlx.parse('sheet1',dtype = 'object')
 # print(xlx.head())
 # print(xlx.count(1).values)
 
 for i in range(len(xlx.index.values)):
     number = xlx.count(1)[i]
-    print('伙食' + str(i))
+    print('第' + str(i+1) + '天')
     for j in range(0,number):
         # print(xlx[j][i],' ',fetchCal.fetchCal(xlx[j][i]),fetchCal.fetchProtein(xlx[j][i]))
         result = fetchCal.fetchMain(xlx[j][i])
