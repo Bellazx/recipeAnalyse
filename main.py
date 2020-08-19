@@ -14,11 +14,10 @@ xlx2 = pd.read_excel(fileName2, sheet_name='lunch', header=None)
 for i in range(len(xlx1.index.values)):
     number = xlx1.count(1)[i]
     print('第' + str(i+1) + '天')
-    calSum = 0
+    calSum, proSum, fatSum, saturatedSum, fattySum,cholesterolSum, carbohydrateSum, sugarSum, fiberSum, natriumSum,calciumSum, ironSum, seleniumSum, zincSum = 0,0,0,0,0,0,0,0,0,0,0,0,0,0
     for j in range(0,number):
         # print(xlx[j][i],' ',fetchCal.fetchCal(xlx[j][i]),fetchCal.fetchProtein(xlx[j][i]))
         result = fetchCal.fetchMain(xlx1[j][i])
-
         if (result):
             result.fetchOutPut()
             print('---------------------------------------------------------------')
