@@ -36,14 +36,14 @@ def fetchProtein(foodName):
 class foodIngredient():
     def __init__(self, name=None, calory=None, protein=None, fat=None, saturated_fat=None, fatty_acid=None,
                  cholesterol=None, carbohydrate=None, sugar=None, fiber_dietary=None, natrium=None,
-                 calcium=None, iron=None, selenium=None, zinc=None,unit = None):
+                 calcium=None, iron=None, selenium=None, zinc=None, unit = None, mineralsUnit = None):
         self.calory = calory
         self.protein = protein
         self.fat = fat
-        self.saturate_fat = saturated_fat
+        self.saturated_fat = saturated_fat
         self.fatty_acid = fatty_acid
         self.cholesterol = cholesterol
-        self.carbohydarte = carbohydrate
+        self.carbohydrate = carbohydrate
         self.sugar = sugar
         self.fiber_dietary = fiber_dietary
         self.natrium = natrium
@@ -52,39 +52,40 @@ class foodIngredient():
         self.selenium = selenium
         self.zinc = zinc
         self.name = name
-        self.unit = unit;
+        self.unit = unit
+        self.mineralsUnit = mineralsUnit;
 
     def fetchOutPut(self):
         if (self.name):
             print('菜名   : ', self.name)
         if (self.calory):
-            print('热量   : ', self.calory,self.unit['calory'])
+            print('热量   : ', self.calory,self.unit.get('calory'))
         if (self.protein):
-            print('蛋白质  : ', self.protein,self.unit['protein'])
+            print('蛋白质  : ', self.protein,self.unit.get('protein'))
         if (self.fat):
-            print('脂肪   : ', self.fat,self.unit['fat'])
+            print('脂肪   : ', self.fat,self.unit.get('fat'))
         if (self.sugar):
-            print('糖     : ', self.sugar,self.unit['suger'])
-        if (self.saturate_fat):
-            print('饱和脂肪 : ', self.saturate_fat,self.unit['saturated_fat'])
+            print('糖     : ', self.sugar,self.unit.get('suger'))
+        if (self.saturated_fat):
+            print('饱和脂肪 : ', self.saturated_fat,self.unit.get('saturated_fat'))
         if (self.fatty_acid):
-            print('反式脂肪 : ', self.fatty_acid,self.unit['fatty_acid'])
+            print('反式脂肪 : ', self.fatty_acid,self.unit.get('fatty_acid'))
         if (self.cholesterol):
-            print('胆固醇  : ', self.cholesterol,self.unit['cholesterol'])
-        if (self.carbohydarte):
-            print('碳水   : ', self.carbohydarte,self.unit['carbohydarte'])
+            print('胆固醇  : ', self.cholesterol,self.unit.get('cholesterol'))
+        if (self.carbohydrate):
+            print('碳水   : ', self.carbohydrate,self.unit.get('carbohydrate'))
         if (self.fiber_dietary):
-            print('膳食纤维 : ', self.fiber_dietary,self.unit['fiber_dietary'])
+            print('膳食纤维 : ', self.fiber_dietary,self.unit.get('fiber_dietary'))
         if (self.natrium):
-            print('钠 : ', self.natrium,self.unit['natrium'])
+            print('钠 : ', self.natrium,self.unit.get('natrium'))
         if(self.calcium):
-            print('钙 :',self.calcium,self.unit['calcium'])
+            print('钙 :',self.calcium,self.mineralsUnit.get('calcium'))
         if (self.iron):
-            print('铁 :', self.iron,self.unit['iron'])
+            print('铁 :', self.iron,self.mineralsUnit.get('iron'))
         if (self.zinc):
-            print('锌 :', self.zinc,self.unit['zinc'])
+            print('锌 :', self.zinc,self.mineralsUnit.get('zinc'))
         if (self.selenium):
-            print('硒 :', self.selenium,self.unit['selenium'])
+            print('硒 :', self.selenium,self.mineralsUnit.get('selenium'))
 
 
 def fetchMain(foodName):
@@ -113,6 +114,7 @@ def fetchMain(foodName):
         foodIng.selenium = mineralsDic['selenium']
         foodIng.name = foodName
         foodIng.unit = unitDic
+        foodIng.mineralsUnit = mineralsUnit
 
 
         return foodIng
