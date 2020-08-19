@@ -1,26 +1,35 @@
 # coding=utf-8
 
-import xlrd
-import numpy as np
 import pandas as pd
 import fetchCal
 
-fileName = 'recipe.xlsx'
-xlx = pd.read_excel(fileName,sheet_name='breakfast',header=None)
+fileName1 = 'recipe.xlsx'
+fileName2 = 'amount.xlsx'
+xlx1 = pd.read_excel(fileName1, sheet_name='lunch', header=None)
+xlx2 = pd.read_excel(fileName2, sheet_name='lunch', header=None)
 # df = xlx.parse('sheet1',dtype = 'object')
 # print(xlx.head())
 # print(xlx.count(1).values)
 
-for i in range(len(xlx.index.values)):
-    number = xlx.count(1)[i]
+for i in range(len(xlx1.index.values)):
+    number = xlx1.count(1)[i]
     print('第' + str(i+1) + '天')
+    calSum = 0
     for j in range(0,number):
         # print(xlx[j][i],' ',fetchCal.fetchCal(xlx[j][i]),fetchCal.fetchProtein(xlx[j][i]))
-        result = fetchCal.fetchMain(xlx[j][i])
+        result = fetchCal.fetchMain(xlx1[j][i])
+
         if (result):
             result.fetchOutPut()
             print('---------------------------------------------------------------')
+    # print(calSum)
     print('***************************************************************')
+
+def outputResult(foodIngredient, calSum, proSum, fatSum, saturatedSum, fattySum,
+                 cholesterolSum, carbohydrateSum, sugarSum, fiberSum, natriumSum,
+                 calciumSum, ironSum, seleniumSum, zincSum):
+    if(foodIngredient.calory.split()[0]):
+        calSum += float(result.calory.split()[0]) * (xlx2[j][i] / 100)
 
 
 # cursor.execute('select * from yk_foodnutrition limit 1;')
